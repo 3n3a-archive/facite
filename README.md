@@ -9,9 +9,12 @@ Facite is latin for "do".
 To install facite you need:
 * a jailbroken iPhone
 * Cydia
+
+Install these from Cydia:
 * Activator (repo.rpetri.ch)
 * Python3.7 (apt.bingner.com)
 * curl
+* Sneaky Cam (OPTIONAL)
 
 Run this command as **root** and you're good to go:
 ```bash
