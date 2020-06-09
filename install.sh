@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ `whoami` != root ]; then
-    echo Please run this script as root or using sudo
+    echo "Please run this script as root. Execute: ´su´; Default pw is ´alpine´"
     exit
 fi
 
