@@ -22,7 +22,8 @@ curl https://raw.githubusercontent.com/3n3a/facite/master/install.sh | bash
 **Usage**: facite [Command] (Optional Argument)
 
 **#### HELP MENU ####**
-    Command    Description
+
+    **Command**    *Description*
 
     play -- Resumes playback
     pause -- Pauses Playback
