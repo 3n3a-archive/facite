@@ -1,0 +1,110 @@
+#!/usr/local/bin/python3
+
+## Author: 3n3a
+## Depends: python3, activator, sneakycam
+## Thanks to original author of nimbus.sh
+## Website: 3n3a.ch
+
+import os
+import sys
+
+debug = False
+
+first_arg = ""
+second_arg = ""
+
+try:
+    try:
+        first_arg = str(sys.argv[1])
+    except IndexError:
+        pass
+    try:
+        second_arg = str(sys.argv[2])
+    except IndexError:
+        pass
+except Exception:
+    pass
+
+command_list = {
+    "play": "libactivator.ipod.resume-playback",
+    "pause": "libactivator.ipod.pause-playback",
+    "powerbutton": "libactivator.system.sleepbutton",
+    "photo": "com.spark.SneakyCam.takephoto",
+    "video": "com.spark.SneakyCam.startstopvideo",
+    "home": "libactivator.system.homebutton",
+    "open": second_arg,
+    "settings": "libactivator.settings." + second_arg,
+    "cc": "libactivator.system.activate-control-center",
+    "screenshot": "libactivator.system.take-screenshot",
+    "increase-audio": "libactivator.audio.increase-volume",
+    "decrease-audio": "libactivator.audio.decrease-volume",
+    "increase-brightness": "libactivator.screen.brightness.increase",
+    "decrease-brightness": "libactivator.screen.brightness.decrease",
+    "switcher": "libactivator.system.activate-switcher",
+    "clear-switcher": "libactivator.system.clear-switcher",
+    "nc": "libactivator.system.activate-notification-center",
+    "answer-call": "libactivator.phone.answer-call",
+    "decline-call": "libactivator.phone.disconnect-call",
+    "first-homepage": "libactivator.system.first-springboard-page",
+    "power-menu": "libactivator.system.power-menu",
+    "siri": "libactivator.system.virtual-assistant",
+    "spotlight": "libactivator.system.spotlight",
+    "safe-mode": "libactivator.system.safemode",
+    "powerdown": "libactivator.system.powerdown"
+}
+
+command_desc = {
+    "play": "Resumes playback",
+    "pause": "Pauses Playback",
+    "powerbutton": "Power off Device",
+    "photo": "Snaps a photo [SneakyCam]",
+    "video": "Starts/stops video recording [SneakyCam ]",
+    "home": "Simulates Home button press",
+    "open": "Opens an App with Bundle Id",
+    "settings": "Opens specified preference panel in settings",
+    "cc": "Opens control center",
+    "screenshot": "Takes a screenshot",
+    "increase-audio": "Increases volume",
+    "decrease-audio": "Decreases volume",
+    "increase-brightness": "Increases brightness",
+    "decrease-brightness": "Decreaes brightness",
+    "switcher": "Opens app switcher",
+    "clear-switcher": "Clears app switcher",
+    "nc": "Opens notification centre",
+    "answer-call": "Answers incoming call",
+    "decline-call": "Declines incoming call",
+    "first-homepage": "Jumps to first HomePage (the one with the apps)",
+    "power-menu": "Opens power menu",
+    "siri": "Triggers Siri",
+    "spotlight": "opens spotlight (search function)",
+    "safe-mode": "Activates Safe Mode",
+    "powerdown": "Powers phone down"
+}
+
+def main(first_arg, second_arg):
+    def loop(first_arg, second_arg):
+        if debug:
+            print("First Arg is: " + first_arg)
+            print("Second Arg is: " + second_arg)
+
+        chosen_cmd = command_list[first_arg]
+        if debug: 
+            print("Chosen_cmd is: " + chosen_cmd)
+
+        os.system("activator send " + chosen_cmd)
+
+    def help():
+        print("#### HELP MENU ####")
+        print("    Command    Description\n")
+        for key in command_desc:
+            print("    " + key + " -- " + command_desc[key])
+    
+    if first_arg:
+        try:
+            loop(first_arg, second_arg)
+        except IndexError:
+            pass
+    else:
+        help()
+
+main(first_arg, second_arg)
