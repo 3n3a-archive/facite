@@ -11,11 +11,11 @@ To install facite you need:
 * Cydia
 * Activator (repo.rpetri.ch)
 * Python3.7 (apt.bingner.com)
-* curl / wget
+* curl
 
-Run this command and you're good to go:
+Run this command as **root** and you're good to go:
 ```bash
-wget binaryfile
+curl https://raw.githubusercontent.com/3n3a/facite/master/install.sh | bash
 ```
 
 ## Usage
